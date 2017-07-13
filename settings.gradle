@@ -1,0 +1,5 @@
+rootProject.name = 'either-kotlin'
+include 'library'
+findProject(':library')?.name = 'library'
+include 'sample'
+

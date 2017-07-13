@@ -1,0 +1,16 @@
+group 'com.github.youta1119.either_kotlin'
+version '0.1'
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testCompile  'junit:junit:4.12'
+}
+
