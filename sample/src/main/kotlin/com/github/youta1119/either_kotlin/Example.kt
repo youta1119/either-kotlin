@@ -6,7 +6,11 @@ package com.github.youta1119.either_kotlin
 
 fun main(args: Array<String>) {
    println("hello world")
-   val left = Left<String,Int>("aaaaa")
+   //todo add example
+}
 
-   println(left)
+class Test{
+   fun test(){
+      
+   }
 }
