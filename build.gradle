@@ -11,7 +11,7 @@ buildscript {
 apply plugin: 'maven'
 apply plugin: 'kotlin'
 apply plugin: 'java'
-def VERSION = '0.2'
+def VERSION = '0.1'
 group ' com.github.youta1119.either_kotlin'
 version VERSION
 
