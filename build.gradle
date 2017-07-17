@@ -16,19 +16,27 @@ buildscript {
 repositories {
     jcenter()
     mavenCentral()
+    maven {
+        url 'http://dl.bintray.com/ngsw-taro/maven'
+    }
 }
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-    testCompile 'junit:junit:4.12'
+    testCompile 'com.taroid.knit:knit:0.1.2'
+    testCompile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    testCompile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    testCompile ('junit:junit:4.11'){
+        exclude module: 'hamcrest-core'
+    }
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
 }
 
 publish {
     userOrg = 'youta1119'
     groupId = 'com.github.youta1119'
     artifactId = 'either-kotlin'
-    publishVersion = '0.3'
+    publishVersion = '0.4'
     desc = 'Implementation of Either with kotlin'
     website = 'https://github.com/youta1119/either-kotlin'
 }

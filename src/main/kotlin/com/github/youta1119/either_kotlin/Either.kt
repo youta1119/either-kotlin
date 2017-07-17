@@ -73,16 +73,16 @@ inline fun <A, B> Either<A, B>.exists(predicate: (B) -> Boolean): Boolean = when
 }
 
 @Suppress("UNCHECKED_CAST", "unused")
-inline fun <A, B,A1,B1> Either<A, B>.flatMap(transform: (B) -> Either<A1, B1>): Either<A1, B1> = when (this) {
+inline fun <A:A1, B,A1,B1> Either<A, B>.flatMap(transform: (B) -> Either<A1, B1>): Either<A1, B1> = when (this) {
     is Right -> transform(this.value)
     is Left -> this as Either<A1, B1>
 }
 
 
 @Suppress("UNCHECKED_CAST", "unused")
-inline fun <A, B, C> Either<A, B>.map(transform: (B) -> C): Either<A, C> = when (this) {
+inline fun <A, B:B1, B1> Either<A, B>.map(transform: (B) -> B1): Either<A, B1> = when (this) {
     is Right -> Right(transform(this.value))
-    is Left -> this as Either<A, C>
+    is Left -> this as Either<A, B1>
 }
 
 
