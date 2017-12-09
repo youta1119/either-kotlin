@@ -7,13 +7,13 @@ sealed class Either<A, B> {
 }
 
 @Suppress("unused")
-data class Left<A, B>(val value: A) : Either<A, B>() {
+class Left<A, B>(val value: A) : Either<A, B>() {
     override val isLeft: Boolean = true
     override val isRight: Boolean = false
 }
 
 @Suppress("unused")
-data class Right<A, B>(val value: B) : Either<A, B>() {
+class Right<A, B>(val value: B) : Either<A, B>() {
     override val isLeft: Boolean = false
     override val isRight: Boolean = true
 }
@@ -73,14 +73,14 @@ inline fun <A, B> Either<A, B>.exists(predicate: (B) -> Boolean): Boolean = when
 }
 
 @Suppress("UNCHECKED_CAST", "unused")
-inline fun <A:A1, B,A1,B1> Either<A, B>.flatMap(transform: (B) -> Either<A1, B1>): Either<A1, B1> = when (this) {
+inline fun <A : A1, B, A1, B1> Either<A, B>.flatMap(transform: (B) -> Either<A1, B1>): Either<A1, B1> = when (this) {
     is Right -> transform(this.value)
     is Left -> this as Either<A1, B1>
 }
 
 
 @Suppress("UNCHECKED_CAST", "unused")
-inline fun <A, B:B1, B1> Either<A, B>.map(transform: (B) -> B1): Either<A, B1> = when (this) {
+inline fun <A, B : B1, B1> Either<A, B>.map(transform: (B) -> B1): Either<A, B1> = when (this) {
     is Right -> Right(transform(this.value))
     is Left -> this as Either<A, B1>
 }
